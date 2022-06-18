@@ -44,4 +44,15 @@ public class Board {
     public Piece getPiece(@NotNull Position position) {
         return pieces[position.getRow()][position.getColumn()];
     }
+
+    /**
+     * Place a given piece on a given position.
+     *
+     * @param piece that will be placed on a position
+     * @param position that will place by a piece
+     */
+    public void placePiece(@NotNull Piece piece, @NotNull Position position) {
+        pieces[position.getRow()][position.getColumn()] = piece;
+        piece.position = position;
+    }
 }
