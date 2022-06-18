@@ -14,11 +14,11 @@ import lombok.ToString;
 @ToString(includeFieldNames = false)
 public class Position {
     /**
-     * The matrix row value.
+     * The array row value.
      */
     private int row;
     /**
-     * The matrix column value.
+     * The array column value.
      */
     private int column;
 }

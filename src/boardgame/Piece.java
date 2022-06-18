@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 
 public class Piece {
     /**
-     * <p>Matrix position.</p>
+     * <p>Array position.</p>
      * <p>Knows the board where it is.</p>
      */
     protected Position position;

@@ -3,4 +3,5 @@
  */
 module Chess.System {
     requires lombok;
+    requires org.jetbrains.annotations;
 }
