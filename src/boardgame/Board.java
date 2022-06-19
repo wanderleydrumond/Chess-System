@@ -1,7 +1,6 @@
 package boardgame;
 
 import lombok.Getter;
-import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -30,7 +29,7 @@ public class Board {
     /**
      * Gets the piece position accessing the class atributes <code><i style="color: #C1C3D1";>row</i></code> and <code><i style="color: #C1C3D1";>column</i></code> directly.
      *
-     * @param row horizontal coordinate
+     * @param row    horizontal coordinate
      * @param column vertical coordinate
      * @return the array which contains the piece coordinates
      */
@@ -57,7 +56,7 @@ public class Board {
     /**
      * Place a given piece on a given position.
      *
-     * @param piece that will be placed on a position
+     * @param piece    that will be placed on a position
      * @param position that will place by a piece
      */
     public void placePiece(@NotNull Piece piece, @NotNull Position position) {
@@ -71,7 +70,7 @@ public class Board {
     /**
      * Checks if coordinates are empty or not.
      *
-     * @param row horizontal coordinate
+     * @param row    horizontal coordinate
      * @param column vertical coordinate
      * @return if the coordinates have a piece placed or not
      */

@@ -3,7 +3,6 @@ package chess;
 import boardgame.Board;
 import boardgame.Piece;
 import lombok.Getter;
-import lombok.NonNull;
 
 @Getter
 public class ChessPiece extends Piece {
@@ -12,7 +11,13 @@ public class ChessPiece extends Piece {
      */
     private Color color;
 
-    public ChessPiece(@NonNull Board board, Color color) {
+    /**
+     * ChessPiece constructor method with arguments.
+     *
+     * @param board where the object ChessPiece will be placed
+     * @param color enumeration relative to the ChessPiece
+     */
+    public ChessPiece(Board board, Color color) {
         super(board);
         this.color = color;
     }
