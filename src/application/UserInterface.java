@@ -12,6 +12,15 @@ import java.util.Scanner;
  * The game user interface
  */
 public class UserInterface {
+    /**
+     * Clears the console screen.
+     *
+     * @see <a href="https://stackoverflow.com/questions/2979383/java-clear-the-console">How to clear the console?</a>
+     */
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
 
     /**
      * Read a new move from a player.
