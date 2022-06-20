@@ -35,7 +35,7 @@ public class Board {
      */
     public Piece getPiece(int row, int column) {
         if (!positionExists(row, column)) {
-            throw new BoardException("Position not exis tent on the board");
+            throw new BoardException("Position not existent on the board");
         }
         return pieces[row][column];
     }
@@ -48,7 +48,7 @@ public class Board {
      */
     public Piece getPiece(@NotNull Position position) {
         if (!positionExists(position)) {
-            throw new BoardException("Position not exis tent on the board");
+            throw new BoardException("Position not existent on the board");
         }
         return pieces[position.getRow()][position.getColumn()];
     }
@@ -61,7 +61,7 @@ public class Board {
      */
     public void placePiece(@NotNull Piece piece, @NotNull Position position) {
         if (thereIsAPiece(position)) {
-            throw new BoardException("There is already a piece on position: " + position);
+            throw new BoardException("There is already a piece on position " + position);
         }
         pieces[position.getRow()][position.getColumn()] = piece;
         piece.position = position;
@@ -100,5 +100,24 @@ public class Board {
             throw new BoardException("Position not existent on the board");
         }
         return getPiece(position) != null;
+    }
+
+    /**
+     * Removes a piece from board.
+     *
+     * @param position that will be released
+     * @return the piece that will be removed
+     */
+    public Piece removePiece(Position position) {
+        if (!positionExists(position)) {
+            throw new BoardException("Position not existent on the board");
+        }
+        if (getPiece(position) == null) {
+            return null;
+        }
+        Piece auxiliary = getPiece(position);
+        auxiliary.position = null;
+        pieces[position.getRow()][position.getColumn()] = null;
+        return auxiliary;
     }
 }

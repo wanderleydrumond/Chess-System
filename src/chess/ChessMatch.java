@@ -1,8 +1,11 @@
 package chess;
 
 import boardgame.Board;
+import boardgame.Piece;
+import boardgame.Position;
 import chess.pieces.King;
 import chess.pieces.Rook;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Holds the game rules.
@@ -29,6 +32,48 @@ public class ChessMatch {
             }
         }
         return array;
+    }
+
+    /**
+     * The complete process to make a Move on the board.
+     *
+     * @param sourcePosition the game coordinates where the piece come from
+     * @param targetPosition the game coordinates where the is going to
+     * @return The piece that was captured
+     */
+    public ChessPiece performChessMove(@NotNull ChessPosition sourcePosition, ChessPosition targetPosition) {
+        Position source = sourcePosition.toPosition();
+        Position target = targetPosition.toPosition();
+        validateSourcePosition(source);
+        Piece capturedPiece = makeMove(source, target);
+        return (ChessPiece) capturedPiece;
+    }
+
+    /**
+     * <p><code style="color: #50FA7B;">performChessMove</code> auxiliary method.</p>
+     * <p>Perform the moving step.</p>
+     *
+     * @param source the game coordinates where the piece come from
+     * @param target the game coordinates where the is going to
+     * @return The piece that was captured
+     */
+    private Piece makeMove(Position source, Position target) {
+        Piece piece = board.removePiece(source);
+        Piece capturedPiece = board.removePiece(target);
+        board.placePiece(piece, target);
+        return capturedPiece;
+    }
+
+    /**
+     * <p><code style="color: #50FA7B;">performChessMove</code> auxiliary method.</p>
+     * <p>Validates if source position has a piece</p>
+     *
+     * @param position that will be validated
+     */
+    private void validateSourcePosition(Position position) {
+        if (!board.thereIsAPiece(position)) {
+            throw new ChessException("There is no piece on source position");
+        }
     }
 
     /**
