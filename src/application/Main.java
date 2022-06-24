@@ -22,6 +22,11 @@ public class Main {
 
                 System.out.print("\nSource: ");
                 ChessPosition source = UserInterface.readChessPosition(scanner);
+
+                boolean[][] possibleMoves = chessMatch.possibleMoves(source);
+                UserInterface.clearScreen();
+                UserInterface.printBoard(chessMatch.getPieces(), possibleMoves);
+
                 System.out.print("Target: ");
                 ChessPosition target = UserInterface.readChessPosition(scanner);
 

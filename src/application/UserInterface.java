@@ -49,7 +49,25 @@ public class UserInterface {
         for (int index = 0; index < pieces.length; index++) {
             System.out.print("           " + OutputColor.YELLOW_TEXT_BOLD.getValue() + (8 - index) + OutputColor.RESET.getValue() + " ");
             for (int indicator = 0; indicator < pieces.length; indicator++) {
-                printPiece(pieces[index][indicator]);
+                printPiece(pieces[index][indicator], false);
+            }
+            System.out.println();
+        }
+        System.out.println("             " + OutputColor.BLUE_TEXT_BOLD.getValue() + "a b c d e f g h" + OutputColor.RESET.getValue());
+    }
+
+    /**
+     * Prints the whole board.
+     *
+     * @param pieces        the array of pieces containing its coordinates (row, column)
+     * @param possibleMoves the boolean array with possible moves for this piece
+     */
+    public static void printBoard(ChessPiece @NotNull [] @NotNull [] pieces, boolean[][] possibleMoves) {
+        System.out.println();
+        for (int index = 0; index < pieces.length; index++) {
+            System.out.print("           " + OutputColor.YELLOW_TEXT_BOLD.getValue() + (8 - index) + OutputColor.RESET.getValue() + " ");
+            for (int indicator = 0; indicator < pieces.length; indicator++) {
+                printPiece(pieces[index][indicator], possibleMoves[index][indicator]);
             }
             System.out.println();
         }
@@ -61,9 +79,12 @@ public class UserInterface {
      *
      * @param piece the <code>ChessPiece</code> object to be printed
      */
-    private static void printPiece(ChessPiece piece) {
+    private static void printPiece(ChessPiece piece, boolean background) {
+        if (background) {
+            System.out.print(OutputColor.BLACK_BACKGROUND_BRIGHT.getValue() + OutputColor.BLACK_TEXT_BOLD.getValue());
+        }
         if (piece == null) {
-            System.out.print("-");
+            System.out.print("-" + OutputColor.RESET.getValue());
         } else if (piece.getColor() == Color.WHITE) {
             System.out.print(OutputColor.CYAN_TEXT_NORMAL.getValue() + piece + OutputColor.RESET.getValue());
         } else {

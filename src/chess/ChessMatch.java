@@ -35,6 +35,19 @@ public class ChessMatch {
     }
 
     /**
+     * <p><code style="color: #50FA7B;">possibleMoves</code> implementation method.</p>
+     * <p>Give the possible positions from the given source position</p>
+     *
+     * @param sourcePosition position which this piece come from
+     * @return the possible moves from this piece
+     */
+    public boolean[][] possibleMoves(ChessPosition sourcePosition) {
+        Position position = sourcePosition.toPosition(); // Converts the game position into an array position
+        validateSourcePosition(position);
+        return board.getPiece(position).possibleMoves();
+    }
+
+    /**
      * The complete process to make a Move on the board.
      *
      * @param sourcePosition the game coordinates where the piece come from
@@ -58,7 +71,6 @@ public class ChessMatch {
      * @param target target coordinate
      */
     private void validateTargetPosition(Position source, Position target) {
-        System.out.println("validateTargetPosition()");
         if (!board.getPiece(source).possibleMove(target)) {
             throw new ChessException("The chosen piece can't move to target position");
         }
