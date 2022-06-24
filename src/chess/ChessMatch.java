@@ -41,12 +41,27 @@ public class ChessMatch {
      * @param targetPosition the game coordinates where the is going to
      * @return The piece that was captured
      */
-    public ChessPiece performChessMove(@NotNull ChessPosition sourcePosition, ChessPosition targetPosition) {
+    public ChessPiece performChessMove(@NotNull ChessPosition sourcePosition, @NotNull ChessPosition targetPosition) {
         Position source = sourcePosition.toPosition();
         Position target = targetPosition.toPosition();
         validateSourcePosition(source);
+        validateTargetPosition(source, target);
         Piece capturedPiece = makeMove(source, target);
         return (ChessPiece) capturedPiece;
+    }
+
+    /**
+     * <p><code style="color: #50FA7B;">performChessMove</code> auxiliary method.</p>
+     * <p>Validates if target position has possible moves</p>
+     *
+     * @param source source coordinate
+     * @param target target coordinate
+     */
+    private void validateTargetPosition(Position source, Position target) {
+        System.out.println("validateTargetPosition()");
+        if (!board.getPiece(source).possibleMove(target)) {
+            throw new ChessException("The chosen piece can't move to target position");
+        }
     }
 
     /**
@@ -66,7 +81,11 @@ public class ChessMatch {
 
     /**
      * <p><code style="color: #50FA7B;">performChessMove</code> auxiliary method.</p>
-     * <p>Validates if source position has a piece</p>
+     * <p>Validates if source position
+     *     <ul>
+     *     <li>has a piece</li>
+     *     <li>is a valid move</li>
+     * </ul></p>
      *
      * @param position that will be validated
      */
@@ -94,7 +113,7 @@ public class ChessMatch {
     }
 
     /**
-     * Places the pieces on the board.
+     * Places the pieces on the board when the game starts.
      */
     private void initialSetup() {
         placeNewPiece('c', 1, new Rook(board, Color.WHITE));

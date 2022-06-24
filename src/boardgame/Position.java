@@ -21,4 +21,15 @@ public class Position {
      * The array column value.
      */
     private int column;
+
+    /**
+     * Updates the values from a given position.
+     *
+     * @param row    array horizontal coordinate
+     * @param column array vertical coordinate
+     */
+    public void setValues(int row, int column) {
+        this.row = row;
+        this.column = column;
+    }
 }

@@ -17,9 +17,14 @@ public class King extends ChessPiece {
         return "K";
     }
 
+    /**
+     * Dictates the possible moves for each King piece type.
+     *
+     * @return the array containing all possible moves
+     */
     @Override
     public boolean[][] possibleMoves() {
-        boolean[][] auxiliary = new boolean[getBoard().getRows()][getBoard().getColumns()];
-        return auxiliary;
+        boolean[][] possibleMoves = new boolean[getBoard().getRows()][getBoard().getColumns()];
+        return possibleMoves;
     }
 }
