@@ -45,7 +45,7 @@ public abstract class Piece {
      *
      * @return true if yes, false otherwise
      */
-    public boolean isTherePossibleMoves() {
+    public boolean isThereAnyPossibleMove() {
         boolean[][] auxiliary = possibleMoves();
         for (int index = 0; index < auxiliary.length; index++) {
             for (int indicator = 0; indicator < auxiliary.length; indicator++) {

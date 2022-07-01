@@ -33,6 +33,7 @@ public class Rook extends ChessPiece {
         // Verifying above
         positionRook.setValues(position.getRow() - 1, position.getColumn());
         while (getBoard().positionExists(positionRook) && !getBoard().thereIsAPiece(positionRook)) {
+            System.out.println("\\\\Verifying above: " + getColor());
             possibleMoves[positionRook.getRow()][positionRook.getColumn()] = true;
             positionRook.setRow(positionRook.getRow() - 1);
         }
@@ -41,6 +42,7 @@ public class Rook extends ChessPiece {
         // Verifying below
         positionRook.setValues(position.getRow() + 1, position.getColumn());
         while (getBoard().positionExists(positionRook) && !getBoard().thereIsAPiece(positionRook)) {
+            System.out.println("\\\\Verifying below: " + getColor());
             possibleMoves[positionRook.getRow()][positionRook.getColumn()] = true;
             positionRook.setRow(positionRook.getRow() + 1);
         }
@@ -49,6 +51,7 @@ public class Rook extends ChessPiece {
         // Verifying left
         positionRook.setValues(position.getRow(), position.getColumn() - 1);
         while (getBoard().positionExists(positionRook) && !getBoard().thereIsAPiece(positionRook)) {
+            System.out.println("\\\\Verifying left: " + getColor());
             possibleMoves[positionRook.getRow()][positionRook.getColumn()] = true;
             positionRook.setColumn(positionRook.getColumn() - 1);
         }
@@ -57,6 +60,7 @@ public class Rook extends ChessPiece {
         // Verifying right
         positionRook.setValues(position.getRow(), position.getColumn() + 1);
         while (getBoard().positionExists(positionRook) && !getBoard().thereIsAPiece(positionRook)) {
+            System.out.println("\\\\Verifying right: " + getColor());
             possibleMoves[positionRook.getRow()][positionRook.getColumn()] = true;
             positionRook.setColumn(positionRook.getColumn() + 1);
         }
